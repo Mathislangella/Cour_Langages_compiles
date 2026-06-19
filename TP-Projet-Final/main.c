@@ -1,5 +1,7 @@
-#include "Outils.h"
+#include "outils.h"
 #include "mastermind.h"
+#include "pendu.h"
+#include "PFS.h"
 
 
 #include <stdio.h>
@@ -12,15 +14,17 @@ int main() {
     int score = 0;
     char choix[100];
     bool Leave = false;
-    char message[100] = "\n\n";
+    char message[100] = "";
 
     printf("Bienvenue dans le monde incroyable des minijeux du projet de cours de langages compiles\n");
     printf("Vous allez pouvoir jouer a 3 minijeux differents.\n");
-    printf("Votre score est commun a tout les jeux ,actuel vous avez %d points.\n", score);
+
     while (!Leave) {
 
         printf("%s", message);
-        char message[100] = "\n\n";
+
+        printf("\n\nVotre score est commun a tout les jeux ,actuel vous avez %d points.\n\n", score);
+
         printf("Veuillez choisir un minijeux (1, 2 ou 3)\n");
         printf(" - Le premier   est un jeu de devinette de nombre.\n");
         printf(" - Le deuxieme  est un jeu du Pendu.\n");
@@ -29,22 +33,24 @@ int main() {
 
         printf("Votre choix : ");
         scanf(" %s", choix);
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
         int choixInt = atoi(choix);
         switch (choixInt) {
             case 10:
                 Leave = true;
                 break;
-                
+
             case 1:
                 Mastermind(&score);
                 break;
 
             case 2:
-                // jeuPendu();
+                Pendu(&score);
                 break;
 
             case 3:
-                // jeuPierreFeuilleCiseau();
+                PlayPFC(&score);
                 break;
 
             default:
