@@ -12,11 +12,7 @@ int PlayPFC(int *score) {
     int choixJoueur;
 
     char input[100];
-
     char message[100] = "Bienvenue dans le jeu du PierreFeuilleCiseaux\n\n";
-
-    printf("\n");
-        printf("\n");
 
     while (1) {
         printf("%s", message);
